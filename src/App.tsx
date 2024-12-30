@@ -16,9 +16,9 @@ function App() {
         <NavBar></NavBar>
       </GridItem>
       {/* Side panel - only show for 1024 px */}
-      <GridItem area='aside' bg='gold'display={{base: "none", lg: "block"}}>Aside</GridItem>
+      <GridItem area='aside' display={{base: "none", lg: "block"}}>Aside</GridItem>
       {/* Main contents area */}
-      <GridItem area='main' bg='dodgerblue'>
+      <GridItem area='main'>
         <GameGrid></GameGrid>
       </GridItem>
     </Grid>
