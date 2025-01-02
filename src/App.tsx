@@ -11,14 +11,19 @@ function App() {
     <Grid templateAreas={{
       base: `"nav" "main"`, // mobile devices (< 1024 px)
       lg: `"nav nav" "aside main"` // 1024 px
-    }}> 
+    }}
+    templateColumns={{
+      base: '1fr', // 1 fraction (take all available space)
+      lg: '200px 1fr' // 2 columns (200px for aside and take all available space for main contents)
+    }}
+    > 
       {/* Top bar navigation panel */}
       <GridItem area='nav'>
         <NavBar></NavBar>
       </GridItem>
       {/* Side panel - only show for 1024 px */}
       <Show above="lg">
-        <GridItem area='aside'>
+        <GridItem area='aside' paddingX={5}>
           <GenreList></GenreList>
         </GridItem>
       </Show>
