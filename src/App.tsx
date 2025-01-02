@@ -27,7 +27,7 @@ function App() {
       {/* Side panel - only show for 1024 px */}
       <Show above="lg">
         <GridItem area='aside' paddingX={5}>
-          <GenreList onSelectGenre={(genre) => {setSelectedGenre(genre)}}></GenreList>
+          <GenreList onSelectGenre={(genre) => { setSelectedGenre(genre) } } selectedGenre={selectedGenre}></GenreList>
         </GridItem>
       </Show>
       {/* Main contents area */}
