@@ -57,7 +57,7 @@ function App() {
         <Box paddingLeft={2}>
           <GameHeading gameQuery={gameQuery}></GameHeading>
           <Flex marginBottom={5}>
-            <Box marginRight={5}>
+            <Box marginRight={2}>
               <PlatformSelector selectedPlatform = {gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})}></PlatformSelector>
             </Box>
             <SortSelector sortOrder={gameQuery.sortOrder} onSelectSortOrder={(sortOrder) => setGameQuery({...gameQuery, sortOrder})}></SortSelector>
