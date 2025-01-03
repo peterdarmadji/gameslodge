@@ -2,7 +2,7 @@ import { Box, Button, Flex, Grid, GridItem, HStack, Show } from "@chakra-ui/reac
 import NavBar from "./components/NavBar"
 import GameGrid from "./components/GameGrid"
 import GenreList from "./components/GenreList"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Genre } from "./hooks/use-genres"
 import PlatformSelector from "./components/PlatformSelector"
 import { Platform } from "./hooks/use-games"
@@ -18,18 +18,26 @@ export interface GameQuery {
 
 function App() {
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
+  useEffect(() => {
+    document.title = "Game Hub"
+  }, [])
 
   return (
     // | nav   | nav  |
     // | aside | main |
     <Grid templateAreas={{
-      base: `"nav" "main"`, // mobile devices (< 1024 px)
-      lg: `"nav nav" "aside main"` // 1024 px
+      base: `"nav" "main" "footer"`, // mobile devices (< 1024 px)
+      lg: `"nav nav" "aside main" "footer footer"` // 1024 px
+    }}
+    templateRows={{
+      base: 'auto 1fr auto',
+      lg: 'auto 1fr auto'
     }}
     templateColumns={{
       base: '1fr', // 1 fraction (take all available space)
       lg: '200px 1fr' // 2 columns (200px for aside and take all available space for main contents)
     }}
+    minHeight={"100vh"} // footer sits at bottom of tall screens
     > 
       {/* Top bar navigation panel */}
       <GridItem area='nav'>
@@ -53,6 +61,10 @@ function App() {
           </Flex>
         </Box>
         <GameGrid gameQuery={gameQuery}></GameGrid>
+      </GridItem>
+      {/* Footer area */}
+      <GridItem area='footer' color={"whiteAlpha.600"} textAlign={"center"} padding={4}>
+        © 2025 Peter Darmadji. All rights reserved.
       </GridItem>
     </Grid>
   )
