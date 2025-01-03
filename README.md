@@ -1,6 +1,6 @@
 # GamesLodge
 
-A **Game Hub** built with **React**, **TypeScript**, and **Chakra UI**. This project serves as a portfolio piece, showcasing the latest and most popular games in the market for multiple platforms, all through the **RAWG** API. Explore new titles, filter by genre, pick your favorite platform, and see what's trending.
+A **Game Hub** built with **React**, **TypeScript**, and **Chakra UI**. This project serves as a portfolio piece, showcasing the latest and most popular games in the market for multiple platforms, all through the **RAWG** API. It is inspired by the **programming tutorials by Mosh** and further customized to suit my personal learning goals. Explore new titles, filter by genre, pick your favorite platform, and see what's trending. Explore new titles, filter by genre, pick your favorite platform, and see what's trending.
 
 ## Live Demo
 
