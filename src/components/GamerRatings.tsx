@@ -1,18 +1,31 @@
-import React from 'react'
-import { Text } from '@chakra-ui/react'
-import { Game } from '@/hooks/use-games'
+import React from "react";
+import { Heading, HStack, Icon, Text } from "@chakra-ui/react";
+import { Game } from "@/hooks/use-games";
+import { FaStar } from "react-icons/fa";
 
 interface Props {
-    game: Game
+  game: Game;
 }
 
-const GamerRatings = ({game}: Props) => {
+const GamerRatings = ({ game }: Props) => {
   return (
-    <Text color={
-        game.rating >= 4.20 ? "green.400" : game.rating >= 3.5 ? "yellow.400" : "red.400" 
-        }>Ratings: {game.rating}
-    </Text>
-  )
-}
+    <HStack spacing={1}>
+      <Icon color={"yellow.400"} as={FaStar}></Icon>
+      <Text
+        color={
+          game.rating >= 4.2
+            ? "green.400"
+            : game.rating >= 3.5
+            ? "yellow.400"
+            : "red.400"
+        }
+        fontSize={16}
+        fontWeight={"bold"}
+      >
+        {game.rating}
+      </Text>
+    </HStack>
+  );
+};
 
-export default GamerRatings
+export default GamerRatings;
