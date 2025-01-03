@@ -9,7 +9,7 @@ interface Props {
 
 const GamerRatings = ({ game }: Props) => {
   return (
-    <HStack spacing={1}>
+    <HStack spacing={2}>
       <Icon color={"yellow.400"} as={FaStar}></Icon>
       <Text
         color={
