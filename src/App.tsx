@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Grid, GridItem, HStack, Show } from "@chakra-ui/react"
+import { Box, Button, Flex, Grid, GridItem, HStack, Show, Text } from "@chakra-ui/react"
 import NavBar from "./components/NavBar"
 import GameGrid from "./components/GameGrid"
 import GenreList from "./components/GenreList"
@@ -25,19 +25,22 @@ function App() {
   return (
     // | nav   | nav  |
     // | aside | main |
-    <Grid templateAreas={{
-      base: `"nav" "main" "footer"`, // mobile devices (< 1024 px)
-      lg: `"nav nav" "aside main" "footer footer"` // 1024 px
-    }}
-    templateRows={{
-      base: 'auto 1fr auto',
-      lg: 'auto 1fr auto'
-    }}
-    templateColumns={{
-      base: '1fr', // 1 fraction (take all available space)
-      lg: '200px 1fr' // 2 columns (200px for aside and take all available space for main contents)
-    }}
-    minHeight={"100vh"} // footer sits at bottom of tall screens
+    <Grid 
+      height={"100vh"}
+      overflow={"hidden"}
+      templateAreas={{
+        base: `"nav" "main" "footer"`, // mobile devices (< 1024 px)
+        lg: `"nav nav" "aside main" "footer footer"` // 1024 px
+      }}
+      templateRows={{
+        base: 'auto 1fr auto',
+        lg: 'auto 1fr auto'
+      }}
+      templateColumns={{
+        base: '1fr', // 1 fraction (take all available space)
+        lg: '200px 1fr' // 2 columns (200px for aside and take all available space for main contents)
+      }}
+      minHeight={"100vh"} // footer sits at bottom of tall screens
     > 
       {/* Top bar navigation panel */}
       <GridItem area='nav'>
@@ -45,12 +48,12 @@ function App() {
       </GridItem>
       {/* Side panel - only show for 1024 px */}
       <Show above="lg">
-        <GridItem area='aside' paddingX={5}>
+        <GridItem area='aside' position={"sticky"} overflowY={"auto"} paddingX={5}>
           <GenreList onSelectGenre={(genre) => { setGameQuery({...gameQuery, genre}) } } selectedGenre={gameQuery.genre}></GenreList>
         </GridItem>
       </Show>
       {/* Main contents area */}
-      <GridItem area='main'>
+      <GridItem area='main' overflowY={"auto"}>
         <Box paddingLeft={2}>
           <GameHeading gameQuery={gameQuery}></GameHeading>
           <Flex marginBottom={5}>
@@ -61,10 +64,10 @@ function App() {
           </Flex>
         </Box>
         <GameGrid gameQuery={gameQuery}></GameGrid>
-      </GridItem>
-      {/* Footer area */}
-      <GridItem area='footer' color={"whiteAlpha.600"} textAlign={"center"} padding={4}>
-        © 2025 Peter Darmadji. All rights reserved.
+        {/* Footer area */}
+        <GridItem area='footer' color={"whiteAlpha.600"} textAlign={"center"} padding={4}>
+          <Text fontSize={12}>© 2025 Peter Darmadji. All rights reserved.</Text>
+        </GridItem>
       </GridItem>
     </Grid>
   )
