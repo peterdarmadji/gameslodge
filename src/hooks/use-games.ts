@@ -1,32 +1,17 @@
 import { GameQuery } from "@/App"
-import useData from "./use-data"
-
-export interface Platform {
-	id: number
-	name: string
-	slug: string
-}
-
-export interface Game {
-	id: number
-	name: string
-	background_image: string
-	rating: number
-	parent_platforms: {platform: Platform}[] // an object array of type platform
-	metacritic: number
-}
+import gameService, { Game } from "@/services/game-service"
+import { useQuery } from "@tanstack/react-query"
 
 const useGames = (gameQuery: GameQuery) => 
-	useData<Game>(
-		'/games', 
-		{
-			params: {
-				genres: gameQuery.genre?.id, 
-				platforms: gameQuery.platform?.id,
-				ordering: gameQuery.sortOrder,
-				search: gameQuery.searchText
-			}
-		}, 
-		[gameQuery])
+  useQuery<Game[], Error>({
+    queryKey: ["games", gameQuery],
+    queryFn: () => gameService.getAll({
+      genres: gameQuery.genre?.id,
+      platforms: gameQuery.platform?.id,
+      ordering: gameQuery.sortOrder,
+      search: gameQuery.searchText
+    }),
+    staleTime: 5 * 60 * 1000 // 5 mins
+  })
 
 export default useGames

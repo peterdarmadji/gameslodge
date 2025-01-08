@@ -1,4 +1,4 @@
-import useGenres, { Genre } from "@/hooks/use-genres";
+import useGenres from "@/hooks/use-genres";
 import getCroppedImageUrl from "@/services/image-url";
 import {
   Button,
@@ -11,6 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import ListItemSkeleton from "./ListItemSkeleton";
+import { Genre } from "@/services/genre-service";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
@@ -29,7 +30,7 @@ const GenreList = ({ selectedGenre, onSelectGenre }: Props) => {
           skeletons.map((skeleton) => (
             <ListItemSkeleton key={skeleton}></ListItemSkeleton>
           ))}
-        {data.map((genre) => (
+        {data?.map((genre) => (
           <ListItem key={genre.id} paddingY={"5px"}>
             <HStack>
               <Image

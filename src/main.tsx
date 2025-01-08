@@ -11,12 +11,12 @@ const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
       <ChakraProvider theme={theme}>
         <ColorModeScript initialColorMode={theme.config.initialColorMode}></ColorModeScript>
-        <App />
-        <ReactQueryDevtools></ReactQueryDevtools>
+          <QueryClientProvider client={queryClient}>
+            <App />
+            <ReactQueryDevtools></ReactQueryDevtools>
+          </QueryClientProvider>
       </ChakraProvider>
-    </QueryClientProvider>
   </React.StrictMode>,
 )
