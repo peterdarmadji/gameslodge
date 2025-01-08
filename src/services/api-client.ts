@@ -14,7 +14,7 @@ interface FetchResponse<T> {
 
 class APIClient<T> {
   endpoint: string;
-
+ 
   constructor (endpoint: string) {
     this.endpoint = endpoint;
   }
