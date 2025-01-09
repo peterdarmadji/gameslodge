@@ -53,10 +53,10 @@ function App() {
         </GridItem>
       </Show>
       {/* Main contents area */}
-      <GridItem area='main' overflowY={"auto"}>
+      <GridItem area='main'>
         <Box paddingLeft={2}>
           <GameHeading gameQuery={gameQuery}></GameHeading>
-          <Flex marginBottom={5}>
+          <Flex marginBottom={2}>
             <Box marginRight={2}>
               <PlatformSelector selectedPlatform = {gameQuery.platform} onSelectPlatform={(platform) => setGameQuery({...gameQuery, platform})}></PlatformSelector>
             </Box>
@@ -64,10 +64,6 @@ function App() {
           </Flex>
         </Box>
         <GameGrid gameQuery={gameQuery}></GameGrid>
-        {/* Footer area */}
-        <GridItem area='footer' color={"whiteAlpha.600"} textAlign={"center"} padding={4}>
-          <Text fontSize={12}>© 2025 Peter Darmadji. All rights reserved.</Text>
-        </GridItem>
       </GridItem>
     </Grid>
   )
