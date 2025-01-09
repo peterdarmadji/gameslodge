@@ -26,34 +26,31 @@ function App() {
     // | nav   | nav  |
     // | aside | main |
     <Grid 
-      height={"100vh"}
-      overflow={"hidden"}
       templateAreas={{
-        base: `"nav" "main" "footer"`, // mobile devices (< 1024 px)
-        lg: `"nav nav" "aside main" "footer footer"` // 1024 px
+        base: `"nav" "main"`, // mobile devices (< 1024 px)
+        lg: `"nav nav" "aside main"` // 1024 px
       }}
       templateRows={{
-        base: 'auto 1fr auto',
-        lg: 'auto 1fr auto'
+        base: 'auto 1fr',
+        lg: 'auto 1fr'
       }}
       templateColumns={{
         base: '1fr', // 1 fraction (take all available space)
         lg: '200px 1fr' // 2 columns (200px for aside and take all available space for main contents)
       }}
-      minHeight={"100vh"} // footer sits at bottom of tall screens
     > 
       {/* Top bar navigation panel */}
-      <GridItem area='nav'>
+      <GridItem area='nav' position={"sticky"} zIndex={"999"} top={"0"}>
         <NavBar onSearch={(searchText) => setGameQuery({...gameQuery, searchText})}></NavBar>
       </GridItem>
       {/* Side panel - only show for 1024 px */}
       <Show above="lg">
-        <GridItem area='aside' position={"sticky"} overflowY={"auto"} paddingX={5}>
+        <GridItem area='aside' position={"sticky"} overflowY={"auto"} top={"80px"} paddingX={5} maxHeight="calc(100vh - 80px)">
           <GenreList onSelectGenre={(genre) => { setGameQuery({...gameQuery, genre}) } } selectedGenre={gameQuery.genre}></GenreList>
         </GridItem>
       </Show>
       {/* Main contents area */}
-      <GridItem area='main'>
+      <GridItem area='main' maxHeight="calc(100vh - 80px)" overflow={"hidden"}>
         <Box paddingLeft={2}>
           <GameHeading gameQuery={gameQuery}></GameHeading>
           <Flex marginBottom={2}>

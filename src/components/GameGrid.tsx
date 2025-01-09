@@ -27,7 +27,7 @@ const GameGrid = ({ gameQuery }: Props) => {
   if (error) return <Text>{error.message}</Text>;
 
   return (
-    <Box id="scrollableDiv" height={"800px"} overflow={"auto"}>
+    <Box id="scrollableDiv" height={"100%"} overflow={"auto"}>
       <InfiniteScroll
         scrollableTarget="scrollableDiv"
         next={() => fetchNextPage()}
