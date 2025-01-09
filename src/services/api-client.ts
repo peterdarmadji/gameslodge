@@ -7,14 +7,15 @@ const axiosInstance = axios.create({
     }
 })
 
-interface FetchResponse<T> {
+export interface FetchResponse<T> {
   count: number;
+  next: string | null;
   results: T[];
 }
 
 class APIClient<T> {
   endpoint: string;
- 
+
   constructor (endpoint: string) {
     this.endpoint = endpoint;
   }
@@ -22,12 +23,6 @@ class APIClient<T> {
   getAll = (params?: object) => {
     return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, {params})
-      .then(res => res.data.results);
-  }
-
-  post = (data: T) => {
-    return axiosInstance
-      .post<T>(this.endpoint, data)
       .then(res => res.data);
   }
 }
