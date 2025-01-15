@@ -15,18 +15,10 @@ import { useEffect, useState } from "react";
 import PlatformSelector from "./components/PlatformSelector";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
-import { Platform } from "./services/platform-service";
-import { Genre } from "./services/genre-service";
-
-export interface GameQuery {
-  genreId?: number;
-  platformId?: number;
-  sortOrder: string;
-  searchText: string;
-}
+import useGameQueryStore from "./store";
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
+
   useEffect(() => {
     document.title = "Game Hub";
   }, []);
@@ -50,9 +42,7 @@ function App() {
     >
       {/* Top bar navigation panel */}
       <GridItem area="nav" position={"sticky"} zIndex={"999"} top={"0"}>
-        <NavBar
-          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
-        ></NavBar>
+        <NavBar></NavBar>
       </GridItem>
       {/* Side panel - only show for 1024 px */}
       <Show above="lg">
@@ -64,36 +54,21 @@ function App() {
           paddingX={5}
           maxHeight="calc(100vh - 80px)"
         >
-          <GenreList
-            onSelectGenre={(genre) => {
-              setGameQuery({ ...gameQuery, genreId: genre.id });
-            }}
-            selectedGenreId={gameQuery.genreId}
-          ></GenreList>
+          <GenreList></GenreList>
         </GridItem>
       </Show>
       {/* Main contents area */}
       <GridItem area="main" maxHeight="calc(100vh - 80px)" overflow={"hidden"}>
         <Box paddingLeft={2}>
-          <GameHeading gameQuery={gameQuery}></GameHeading>
+          <GameHeading></GameHeading>
           <Flex marginBottom={2}>
             <Box marginRight={2}>
-              <PlatformSelector
-                selectedPlatformId={gameQuery.platformId}
-                onSelectPlatform={(platform) =>
-                  setGameQuery({ ...gameQuery, platformId: platform.id })
-                }
-              ></PlatformSelector>
+              <PlatformSelector></PlatformSelector>
             </Box>
-            <SortSelector
-              sortOrder={gameQuery.sortOrder}
-              onSelectSortOrder={(sortOrder) =>
-                setGameQuery({ ...gameQuery, sortOrder })
-              }
-            ></SortSelector>
+            <SortSelector></SortSelector>
           </Flex>
         </Box>
-        <GameGrid gameQuery={gameQuery}></GameGrid>
+        <GameGrid></GameGrid>
       </GridItem>
     </Grid>
   );

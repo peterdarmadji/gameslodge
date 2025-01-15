@@ -4,16 +4,12 @@ import ColorModeSwitch from './ColorModeSwitch'
 import SearchInput from './SearchInput'
 import SettingsPage from './SettingsPage';
 
-interface Props {
-  onSearch: (searchText: string) => void;
-}
-
-const NavBar = ({onSearch}: Props) => {
+const NavBar = () => {
   return (
     // Layout items in single horizontal rows
     <HStack padding={'10px'}>
         <Image src={logo} boxSize={'60px'} marginLeft={2}/>
-        <SearchInput onSearch={onSearch}></SearchInput>
+        <SearchInput></SearchInput>
         <SettingsPage></SettingsPage>
     </HStack>
   )
