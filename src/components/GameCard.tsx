@@ -4,6 +4,7 @@ import CriticScore from './CriticScore'
 import GamerRatings from './GamerRatings'
 import getCroppedImageUrl from '@/services/image-url'
 import { Game } from '@/services/game-service'
+import { Link } from 'react-router-dom'
 
 interface Props {
   game: Game
@@ -23,7 +24,11 @@ const GameCard = ({game}: Props) => {
         flexDirection="column"
         flex="1" // Allows CardBody to expand and fill available space
       >
-        <Heading fontSize={'2xl'} key={game.id}>{game.name}</Heading>
+        <Heading fontSize={'2xl'} key={game.id}>
+          <Link to={'games/' + game.slug}>
+            {game.name}
+          </Link>
+        </Heading>
         <HStack justifyContent={"space-between"}>
           <PlatformIconList platforms={game.parent_platforms.map((platform) => platform.platform)}></PlatformIconList>
           <CriticScore score={game.metacritic}></CriticScore>

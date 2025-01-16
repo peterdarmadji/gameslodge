@@ -8,6 +8,8 @@ export interface Game {
   rating: number
   parent_platforms: {platform: Platform}[] // an object array of type platform
   metacritic: number
+  slug: string
+  description_raw: string
 }
 
 export default new APIClient<Game>("/games", )
