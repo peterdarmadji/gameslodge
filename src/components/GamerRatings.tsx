@@ -1,7 +1,7 @@
 import React from "react";
 import { Heading, HStack, Icon, Text } from "@chakra-ui/react";
 import { FaStar } from "react-icons/fa";
-import { Game } from "@/services/game-service";
+import { Game } from "@/entities/Game";
 
 interface Props {
   game: Game;

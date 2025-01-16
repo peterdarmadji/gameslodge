@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import genreService, { Genre } from "@/services/genre-service";
+import genreService from "@/services/genre-service";
+import { Genre } from "@/entities/Genre";
 import { FetchResponse } from "@/services/api-client";
 import ms from "ms";
 
