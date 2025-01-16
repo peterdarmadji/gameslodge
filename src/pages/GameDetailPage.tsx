@@ -2,6 +2,7 @@ import CriticScore from "@/components/CriticScore";
 import DefinitionItem from "@/components/DefinitionItem";
 import ExpandableText from "@/components/ExpandableText";
 import GameAttributes from "@/components/GameAttributes";
+import GameScreenShot from "@/components/GameScreenshots";
 import GameTrailer from "@/components/GameTrailer";
 import useGame from "@/hooks/use-game";
 import { Grid, Heading, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
@@ -20,7 +21,8 @@ const GameDetailPage = () => {
       <Heading>{game?.name}</Heading>
       <ExpandableText>{game.description_raw}</ExpandableText>
       <GameAttributes game={game}></GameAttributes>
-      <GameTrailer gameId={game.id}></GameTrailer>
+      {/* <GameTrailer gameId={game.id}></GameTrailer> */}
+      <GameScreenShot gameId={game.id}></GameScreenShot>
     </>
   );
 };
